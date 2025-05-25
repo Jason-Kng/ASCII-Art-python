@@ -13,7 +13,7 @@ You can also install CommandCam and take a picture from your webcam and prints t
 
 ##### Sources
 - CommandCam by Ted Burke
-  Website: [[https://batchloaf.wordpress.com/commandcam/]]
+  Website: https://batchloaf.wordpress.com/commandcam/
   Github: [[https://github.com/tedburke/CommandCam]]
 
 - Programming Projects for Advanced Beginners by Robert Heaton
