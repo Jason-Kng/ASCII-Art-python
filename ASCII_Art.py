@@ -1,7 +1,7 @@
 import subprocess
 import os
 import time
-from PIL import Image
+from PIL import Image, ImageDraw, ImageFont
 
 ASCII_MATRIX = "`^\",:;Il!i~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$"
 
@@ -85,6 +85,31 @@ def imageFromCam():
     subprocess.run(' '.join(cmd), shell=True)
     return f"./{filename}.bmp"
 
+def ASCIIToImage(filename, ascii_array, image_size, invert):
+
+    if invert == 1:
+        textColor = (0, 0, 0)
+        image_Color = (255, 255, 255)
+    elif invert == 2:
+        textColor = (255, 255, 255)
+        image_Color = (0, 0, 0)
+    else:
+        textColor = (255, 255, 255)
+        image_Color = (0, 0, 0)
+    # create an image
+    out = Image.new("RGB", image_size, image_Color)
+    # get a font
+    fnt = ImageFont.truetype("arial.ttf", 1, encoding="unic")
+    # get a drawing context
+    d = ImageDraw.Draw(out)
+    # draw multiline text
+    for y in range(image_size[1]):
+        for x in range(image_size[0]):
+            d.text((x, y), ascii_array[x][y], font=fnt, fill=textColor)
+    out.save(filename)
+    out.show()
+
+
 print("Image to ASCII Art Program By: Jason King")
 print()
 
@@ -140,6 +165,10 @@ except:
     print("Cannot Open File.", imageFile)
     quit()
 
+print("Where would you like to print the image?")
+print("Type: 0. Terminal    1. Image")
+printLocation = int(input("> "))
+
 print("Which transformation would you like to use for the image?")
 print("Type: 0. Average Brightness    1. Luminosity    2. Lightness")
 brightnessinput = int(input("> "))
@@ -157,17 +186,33 @@ match(brightnessinput):
     case 0:
         bright_Matrix = avgBrightness(im)
         AsciiArray = brightnessToAscii(bright_Matrix, invert)
-        render(AsciiArray) 
+        if printLocation == 0:
+            render(AsciiArray)
+        elif printLocation == 1:
+            print("What would you like to name the file?")
+            filename = input("> ")
+            ASCIIToImage(filename, AsciiArray, im.size, invert)
         im.close()
     case 1:
         luminosity_Matrix = luminosity(im)
         AsciiArray = brightnessToAscii(luminosity_Matrix, invert)
-        render(AsciiArray) 
+        if printLocation == 0:
+            render(AsciiArray)
+        elif printLocation == 1:
+            print("What would you like to name the file?")
+            filename = input("> ")
+            ASCIIToImage(filename, AsciiArray, im.size)
         im.close()
     case 2:
         lightness_Matrix = lightness(im)
         AsciiArray = brightnessToAscii(lightness_Matrix, invert)
-        render(AsciiArray)
+
+        if printLocation == 0:
+            render(AsciiArray)
+        elif printLocation == 1:
+            print("What would you like to name the file? (include file extension)")
+            filename = input("> ")
+            ASCIIToImage(filename, AsciiArray, im.size, invert)
         im.close() 
 
    
