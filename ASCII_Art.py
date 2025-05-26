@@ -1,6 +1,5 @@
 import subprocess
 import os
-import time
 from PIL import Image, ImageDraw, ImageFont
 
 ASCII_MATRIX = "`^\",:;Il!i~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$"
@@ -214,5 +213,3 @@ match(brightnessinput):
             filename = input("> ")
             ASCIIToImage(filename, AsciiArray, im.size, invert)
         im.close() 
-
-   
