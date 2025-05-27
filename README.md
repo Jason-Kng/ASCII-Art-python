@@ -17,7 +17,7 @@ I have the program to look for CommandCam in just the Downloads folder so it wou
 ##### Libraries
 - pillow (PIL)
 - subprocess
-- math
+- os
 
 ##### Sources
 - CommandCam by Ted Burke
