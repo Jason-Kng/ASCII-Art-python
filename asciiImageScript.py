@@ -335,7 +335,7 @@ def printingChoices(imageObj, printLocation, brightnessInput, invertInput):
             bright_Matrix = avgBrightness(imageObj)
             AsciiArray = brightnessToAscii(bright_Matrix, invert)
             if printLocation == 1:
-                renderToTerminal(AsciiArray)
+                renderToTerminal(imageObj, AsciiArray)
             elif printLocation == 2:
                 print("What would you like to name the file?")
                 print()
@@ -346,7 +346,7 @@ def printingChoices(imageObj, printLocation, brightnessInput, invertInput):
             luminosity_Matrix = luminosity(imageObj)
             AsciiArray = brightnessToAscii(luminosity_Matrix, invert)
             if printLocation == 1:
-                renderToTerminal(AsciiArray)
+                renderToTerminal(imageObj, AsciiArray)
             elif printLocation == 2:
                 print("What would you like to name the file?")
                 print()
@@ -358,7 +358,7 @@ def printingChoices(imageObj, printLocation, brightnessInput, invertInput):
             AsciiArray = brightnessToAscii(lightness_Matrix, invert)
 
             if printLocation == 1:
-                renderToTerminal(AsciiArray)
+                renderToTerminal(imageObj, AsciiArray)
             elif printLocation == 2:
                 print("What would you like to name the file? (include file extension)")
                 print()
