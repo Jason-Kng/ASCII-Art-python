@@ -75,14 +75,14 @@ def renderToTerminal(imageObj, AsciiArray):
 def renderToImage(filename, ascii_array, image_size, invert):
 
     if invert == 1:
-        textColor = (0, 0, 0)
+        textColor = (27, 27, 27)
         image_Color = (255, 255, 255)
     elif invert == 2:
         textColor = (255, 255, 255)
-        image_Color = (0, 0, 0)
+        image_Color = (27, 27, 27)
     else:
         textColor = (255, 255, 255)
-        image_Color = (0, 0, 0)
+        image_Color = (27, 27, 27)
     # create an image
     out = Image.new("RGB", image_size, image_Color)
     # get a font
@@ -148,7 +148,7 @@ def startmenu():
     print("What would you like to do?")
     print("1. Print an image from your webcam.")
     print("2. Print an image from a list")
-    print("3. Print an image from you PC")
+    print("3. Print an image from your PC")
     print("0. Quit the program")
     print()
     print("> ", end='')
@@ -161,10 +161,10 @@ def startmenu():
             print("Invalid Response Please type a number 0 - 3")
             print()
             print("What would you like to do?")
-            print("1. Print an image from your webcam.")
-            print("2. Print an image from a list")
-            print("3. Print an image from you PC")
-            print("0. Quit the program")
+            print("1: Print an image from your webcam.")
+            print("2: Print an image from a list")
+            print("3: Print an image from you PC")
+            print("0: Quit the program")
             print()
             print("> ", end='')
 
@@ -181,18 +181,22 @@ def chooseImage(usrinput):
             imagePaths = ["japaneseCastle.jpg", "blackWhiteSwirl.png"]
             print("What image do you want to print to the terminal?")
             print("--Type--")
-            print("0. Quit")
 
             for i in range(len(imagePaths)):
                 print(f"{i + 1}: {imagePaths[i]}",)
+            print("0: Quit")
             print()
             print("> ", end='')
 
             pathInput = int(input())
-
-            if pathInput == 0:
-                print("Good-Bye!")
-                quit()
+            match(pathInput):
+                case 0:     
+                    print("Good-Bye!")
+                    quit()
+                case 1:
+                    pathInput -= 1
+                case 2:
+                    pathInput -= 1
 # Error Checking
             if pathInput < 0 or pathInput > len(imagePaths):
                 while(pathInput < 0 or pathInput > len(imagePaths)):
@@ -201,10 +205,10 @@ def chooseImage(usrinput):
                     imagePaths = ["japaneseCastle.jpg", "blackWhiteSwirl.png"]
                     print("What image do you want to print to the terminal?")
                     print("--Type--")
-                    print("0: Quit")
 
                     for i in range(len(imagePaths)):
                         print(f"{i + 1}: {imagePaths[i]}",)
+                    print("0: Quit")
                     print()
                     print("> ", end='')
 
@@ -218,6 +222,7 @@ def chooseImage(usrinput):
             print("Loading Image...")
             return imageFile
         case 3:
+            imageFile = None
             filename = input("What is the name of the file you want to print: ")
             print("Searching...")
             for root, dirs, files in os.walk(r'c:\\'):
@@ -346,7 +351,7 @@ def printingChoices(imageObj, printLocation, brightnessInput, invertInput):
                 print("What would you like to name the file?")
                 print()
                 filename = input("> ")
-                renderToImage(filename, AsciiArray, imageObj.size)
+                renderToImage(filename, AsciiArray, imageObj.size, invert)
             imageObj.close()
         case 3:
             lightness_Matrix = lightness(imageObj)
