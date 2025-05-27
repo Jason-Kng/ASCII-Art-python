@@ -189,14 +189,12 @@ def chooseImage(usrinput):
             print("> ", end='')
 
             pathInput = int(input())
-            match(pathInput):
-                case 0:     
-                    print("Good-Bye!")
-                    quit()
-                case 1:
-                    pathInput -= 1
-                case 2:
-                    pathInput -= 1
+
+            if pathInput == 0:
+                print("Good-Bye!")
+                quit()
+            else:
+                pathInput -= 1
 # Error Checking
             if pathInput < 0 or pathInput > len(imagePaths):
                 while(pathInput < 0 or pathInput > len(imagePaths)):
@@ -217,6 +215,8 @@ def chooseImage(usrinput):
                     if pathInput == 0:
                         print("Good-Bye!")
                         quit()
+                    else:
+                        pathInput -= 1
 
             imageFile = os.path.abspath(os.path.join("./Images/", imagePaths[pathInput]))
             print("Loading Image...")
