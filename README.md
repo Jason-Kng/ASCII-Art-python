@@ -21,9 +21,9 @@ I have the program to look for CommandCam in just the Downloads folder so it wou
 
 ##### Sources
 - CommandCam by Ted Burke
-  Website: https://batchloaf.wordpress.com/commandcam/
-  Github: https://github.com/tedburke/CommandCam
+    - Website: https://batchloaf.wordpress.com/commandcam/
+    - Github: https://github.com/tedburke/CommandCam
 
 - Programming Projects for Advanced Beginners by Robert Heaton
-  Website: https://robertheaton.com/2018/06/12/programming-projects-for-advanced-beginners-ascii-art/
-  This is a really good rescource, it doesnt hand hold you through the programming it gives to a goal to get to and leaves the programming all to you.
+    - Website: https://robertheaton.com/2018/06/12/programming-projects-for-advanced-beginners-ascii-art/
+    - This is a really good rescource, it doesnt hand hold you through the programming it gives to a goal to get to and leaves the programming all to you.
