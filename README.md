@@ -21,6 +21,7 @@ I have the program to look for CommandCam in just the Downloads folder so it wou
 
 ##### Sources
 - CommandCam by Ted Burke
+  ** Note: This is an older program so there will be bugs ** 
     - Website: https://batchloaf.wordpress.com/commandcam/
     - Github: https://github.com/tedburke/CommandCam
 
